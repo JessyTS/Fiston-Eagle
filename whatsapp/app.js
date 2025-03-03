@@ -2,16 +2,17 @@ const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = requi
 const { Boom } = require('@hapi/boom')
 const express = require('express')
 const qrcode = require('qrcode')
-const { verifLien } = require('./function.js')
+const fs = require('fs')
 
 const app = express()
 const port = 3000
+let sock = null
 let qrCodeData = ''
 
 async function connectToWhatsApp() {
     const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys')
 
-    const sock = makeWASocket({
+    sock = makeWASocket({
         auth: state
     })
 
@@ -37,33 +38,25 @@ async function connectToWhatsApp() {
         }
     })
 
-    sock.ev.on('messages.upsert', async (event) => {
-        let m = event.messages[0]
-        if (!m.message || !m.key.remoteJid) return
-        if (m.key.fromMe) return
-        const groups = await sock.groupFetchAllParticipating()
-        for (let key in groups) {
-            console.log(key)
-            await sock.groupParticipantsUpdate(
-                key,
-                [`243823617961@s.whatsapp.net`],
-                'demote'
-            )
-        }
-        // if (m.key.remoteJid && m.key.remoteJid.includes("@g.us")) {
-            // let text = (m.message.extendedTextMessage) ? m.message.extendedTextMessage.text.trim().toLowerCase() : m.message.conversation.trim().toLowerCase()
-            // if (verifLien(text)) {
-                // await sock.sendMessage(m.key.remoteJid, {
-                //     text: "Oups ! 😅 Ce lien a été supprimé. N'oubliez pas, les liens externes ne sont pas autorisés ici. Merci de votre compréhension !\n \n> Kira",
-                // }, { quoted: m })
-                // await sock.sendMessage(m.key.remoteJid, { delete: m.key })
-                // await sock.sendMessage("243839264674@s.whatsapp.net", { text: m.key.remoteJid })
-                // await sock.sendMessage("1234@s.whatsapp.net", { forward: msg });
-            // }
-        // }
-    })
-
     sock.ev.on('creds.update', saveCreds)
+}
+
+async function newRegister(num) {
+    let inviteCode = ''
+    let inviteLink = ''
+    const groups = await sock.groupFetchAllParticipating()
+    for (let key in groups) {
+        if (groups[key].subject == "Créons Ensemble") {
+            await sock.groupParticipantsUpdate(groups[key].id, [num], "add")
+            inviteCode = await sock.groupInviteCode(groups[key].id)
+            inviteLink = `https://chat.whatsapp.com/${inviteCode}`
+        }
+    }
+    const buffer = fs.readFileSync("./src/logo.png")
+    await sock.sendMessage(num, {
+        image: buffer,
+        caption: `Bonjour, bienvenue\n\n${inviteLink}`
+    })
 }
 
 app.get('/', (req, res) => {
@@ -77,6 +70,12 @@ app.get('/qr', (req, res) => {
         res.send('QR Code en attente...')
     }
 })
+
+app.get('/register', async (req, res) => {
+    newRegister("243823617961@s.whatsapp.net")
+    res.json({ response: 'good' })
+})
+
 app.listen(port, () => {
     console.log(`🚀 Serveur lancé sur http://localhost:${port}`)
 })
