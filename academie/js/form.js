@@ -38,7 +38,7 @@ form.addEventListener('submit', (event) => {
     Pass.value = `93cdf9060532491ea2b05c0a75b4bd1b`
     Ref.value = `${reference}`
     Amount.value = 5 * 100
-    Accept.value = `${window.location.protocol}//${window.location.host}/php/private/return/sendData.php`
+    Accept.value = `${window.location.protocol}//${window.location.host}/php/private/return/sendData.php/?phone=${phone.value.trim()}`
     Decline.value = `${window.location.protocol}//${window.location.host}/`
     Cancel.value = `${window.location.protocol}//${window.location.host}/`
 

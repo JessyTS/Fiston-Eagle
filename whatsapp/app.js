@@ -59,10 +59,6 @@ async function newRegister(num) {
     })
 }
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
-})
-
 app.get('/qr', (req, res) => {
     if (qrCodeData) {
         res.send(`<img src="${qrCodeData}" alt="QR Code WhatsApp">`)
@@ -72,7 +68,8 @@ app.get('/qr', (req, res) => {
 })
 
 app.get('/register', async (req, res) => {
-    newRegister("243823617961@s.whatsapp.net")
+    const { phone } = req.query
+    newRegister(`${phone}@s.whatsapp.net`)
     res.json({ response: 'good' })
 })
 
