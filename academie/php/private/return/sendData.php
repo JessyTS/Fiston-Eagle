@@ -13,7 +13,7 @@
             if ($response === FALSE) {
                 exit('Erreur avec file_get_contents()');
             } else {
-                header("Location: $protocol://" . $_SERVER['HTTP_HOST'] . "/");
+                header("Location: $protocol://" . $_SERVER['HTTP_HOST'] . "/?status=$status");
                 exit();
             }
         } else {
