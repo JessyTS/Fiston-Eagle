@@ -1,11 +1,16 @@
+<?php
+    require_once __DIR__ . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'init.php';
+    require_once __DIR__ . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'private' . DIRECTORY_SEPARATOR . 'function.php';
+    $title = "Urban Academia - Inscrivez-vous dès maintenant et développez vos compétences.";
+    $description = "Veuillez remplir ce formulaire. Vous serez ensuite redirigé vers notre terminal de paiement pour finaliser votre inscription. Une fois le paiement confirmé, toutes les informations vous seront envoyées instantanément sur WhatsApp.";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>Urban Academia</title>
+        <title><?=$title?></title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="title">
-        <meta content="" name="description">
         <link rel="shortcut icon" href="img/logo.PNG" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,12 +18,27 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/notification.css">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/css/notification.css">
+        <link href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/css/style.css" rel="stylesheet">
+
+        <meta content="<?=$title?>" name="title">
+        <meta content="<?=$description?>" name="description">
+
+        <meta property="og:title" content="<?=$title?>" />
+        <meta property="og:description" content="<?=$description?>" />
+        <meta property="og:image" content="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/logo.png" />
+        <meta property="og:url" content="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="<?=$title?>" />
+        <meta name="twitter:description" content="<?=$description?>" />
+        <meta name="twitter:image" content="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/logo.png" />
+        <meta name="twitter:site" content="@urbangospel" />
     </head>
     <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="51">
         <div class="notification-container"></div>
@@ -29,7 +49,7 @@
         </div>
         <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
             <a href="index.html" class="navbar-brand d-block d-lg-none">
-                <img src="img/logo.PNG" style="max-height: 50px;" alt="">
+                <img src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/logo.PNG" style="max-height: 50px;" alt="">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -49,7 +69,7 @@
             </div>
         </nav>
         <div class="container-fluid bg-light my-6 mt-0" id="home">
-            <img class="logoHo logo2 d-none" src="img/logo.PNG" alt="">
+            <img class="logoHo logo2 d-none" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/logo.PNG" alt="">
             <div class="container py-5 px-lg-5">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-9 pb-0 pt-lg-0">
@@ -64,36 +84,15 @@
                 </div>
             </div>
         </div>
-        <div class="container-xxl py-6" id="about">
+        <div class="container-xxl py-5" id="about">
             <div class="container">
                 <div class="row g-5">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="display-4 text-primary mb-4">Urban Academia</div>
                         <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.</p>
                         <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Afordable Prices</p>
                         <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>High Quality Product</p>
                         <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>On Time Project Delivery</p>
-                        <a class="btn btn-primary py-3 px-5 mt-3" href="">Read More</a>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="row g-3 mb-4">
-                            <div class="col-sm-6">
-                                <img class="img-fluid rounded" src="img/about-1.jpg" alt="">
-                            </div>
-                            <div class="col-sm-6">
-                                <img class="img-fluid rounded" src="img/about-2.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <h5 class="border-end pe-3 me-3 mb-0">Happy Clients</h5>
-                            <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">1234</h2>
-                        </div>
-                        <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam amet diam ipsum clita labore dolor duo clita.</p>
-                        <div class="d-flex align-items-center mb-3">
-                            <h5 class="border-end pe-3 me-3 mb-0">Projects Completed</h5>
-                            <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">1234</h2>
-                        </div>
-                        <p class="mb-0">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam amet diam ipsum clita labore dolor duo clita.</p>
                     </div>
                 </div>
             </div>
@@ -102,7 +101,7 @@
             <div class="container py-5">
                 <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="col-lg-6">
-                        <h1 class="display-5 mb-0">Inscrivez-vous</h1>
+                        <h1 class="display-5 text-primary mb-0">Inscrivez-vous</h1>
                     </div>
                 </div>
                 <div class="row g-5">
@@ -192,63 +191,52 @@
         </div>
         <div class="container-xxl py-6 pt-5" id="photo">
             <div class="container">
-                <div class="row g-5 mb-5 align-items-center wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="col-lg-6">
-                        <h1 class="display-5 mb-0">My Projects</h1>
-                    </div>
-                </div>
                 <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.1s">
                     <div class="col-lg-4 col-md-6 portfolio-item first">
                         <div class="portfolio-img rounded overflow-hidden">
-                            <img class="img-fluid" src="img/project-1.jpg" alt="">
+                            <img class="img-fluid" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/project-1.jpg" alt="">
                             <div class="portfolio-btn">
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/un.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item second">
                         <div class="portfolio-img rounded overflow-hidden">
-                            <img class="img-fluid" src="img/project-2.jpg" alt="">
+                            <img class="img-fluid" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/project-2.jpg" alt="">
                             <div class="portfolio-btn">
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/deux.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item first">
                         <div class="portfolio-img rounded overflow-hidden">
-                            <img class="img-fluid" src="img/project-3.jpg" alt="">
+                            <img class="img-fluid" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/project-3.jpg" alt="">
                             <div class="portfolio-btn">
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/trois.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item second">
                         <div class="portfolio-img rounded overflow-hidden">
-                            <img class="img-fluid" src="img/project-4.jpg" alt="">
+                            <img class="img-fluid" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/project-4.jpg" alt="">
                             <div class="portfolio-btn">
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-4.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/quatre.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item first">
                         <div class="portfolio-img rounded overflow-hidden">
-                            <img class="img-fluid" src="img/project-5.jpg" alt="">
+                            <img class="img-fluid" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/project-5.jpg" alt="">
                             <div class="portfolio-btn">
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-5.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/cinq.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 portfolio-item second">
                         <div class="portfolio-img rounded overflow-hidden">
-                            <img class="img-fluid" src="img/project-6.jpg" alt="">
+                            <img class="img-fluid" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/project-6.jpg" alt="">
                             <div class="portfolio-btn">
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-6.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                                <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/img/six.png" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                             </div>
                         </div>
                     </div>
@@ -258,10 +246,7 @@
         <div class="container-xxl pt-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container-xxl pt-5 px-0">
                 <div class="bg-dark">
-                    <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                    frameborder="0" style="width: 100%; height: 450px; border:0;" allowfullscreen="" aria-hidden="false"
-                    tabindex="0"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd" frameborder="0" style="width: 100%; height: 450px; border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </div>
         </div>
@@ -277,17 +262,17 @@
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/typed/typed.min.js"></script>
-        <script src="lib/counterup/counterup.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/isotope/isotope.pkgd.min.js"></script>
-        <script src="lib/lightbox/js/lightbox.min.js"></script>
-        <script src="js/main.js"></script>
-        <script type="module" src="js/notification.js"></script>
-        <script type="module" src="js/function.js"></script>
-        <script type="module" src="js/form.js"></script>
+        <script src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/wow/wow.min.js"></script>
+        <script src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/easing/easing.min.js"></script>
+        <script src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/waypoints/waypoints.min.js"></script>
+        <script src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/typed/typed.min.js"></script>
+        <script src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/counterup/counterup.min.js"></script>
+        <script src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/lib/lightbox/js/lightbox.min.js"></script>
+        <script src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/js/main.js"></script>
+        <script type="module" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/js/notification.js"></script>
+        <script type="module" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/js/function.js"></script>
+        <script type="module" src="<?=$protocol?>://<?=$_SERVER['HTTP_HOST']?>/js/form.js"></script>
     </body>
 </html>

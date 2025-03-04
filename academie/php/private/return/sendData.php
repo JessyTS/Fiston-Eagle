@@ -8,7 +8,8 @@
         $Method = $_GET['Method'];
         $phone = trim(str_replace('+', '', $_GET['phone']));
         if (updateRegister($reference, $status, $Method)) {
-            $url = "http://localhost:3000/register/?phone=$phone";
+            $url = "https://academia-bot.fistoneagle.com/register/?phone=$phone";
+            // $url = "http://localhost:3000/register/?phone=$phone";
             $response = file_get_contents($url);
             if ($response === FALSE) {
                 exit('Erreur avec file_get_contents()');

@@ -11,9 +11,9 @@
     function Connect_BDD():mysqli {
         if (isset($_SERVER['HTTPS'])) {
             $serveur = "173.252.167.40";
-            $utilisateur = "fistonea_meta";
-            $mot_de_passe = "Azertyuiop.com123";
-            $base_de_donnees = "fistonea_meta";
+            $utilisateur = "fistonea_academi";
+            $mot_de_passe = "fistoneagle.com123";
+            $base_de_donnees = "fistonea_academia";
             $connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
             $connexion->set_charset('utf8mb4');
             return $connexion;
